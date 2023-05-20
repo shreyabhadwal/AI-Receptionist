@@ -2,7 +2,7 @@
 # Take down messages, maybe check calendar invites, provide information
 # Schedule a meeting/appointment, google calendar, ask for information, is the doctor available
 
-import sounddevice as sd
+import sounddevice as sd 
 import soundfile as sf
 import openai
 import keyboard
