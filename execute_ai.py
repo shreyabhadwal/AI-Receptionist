@@ -48,7 +48,7 @@ def answer_the_call():
     =====
     ANSWER: 
     """
-    openai.api_key = "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"
+    openai.api_key = ""
     llm = OpenAI(temperature=0)
     receptionist_prompt = PromptTemplate(template=template, input_variables=["INFO"])
     llm_answer_chain = LLMChain(llm=llm, prompt=receptionist_prompt)
