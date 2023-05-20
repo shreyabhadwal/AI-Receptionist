@@ -15,8 +15,8 @@ import os
 from langchain.agents import AgentType
 from langchain import PromptTemplate
 
-os.environ["ZAPIER_NLA_API_KEY"] = os.environ.get("ZAPIER_NLA_API_KEY", "sk-ak-zAJqR1Fs5vsKN7pWhaFQit7Kug")
-openai.api_key = "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"
+os.environ["ZAPIER_NLA_API_KEY"] = os.environ.get("ZAPIER_NLA_API_KEY", "")
+openai.api_key = ""
 
 def call_agent():
     
