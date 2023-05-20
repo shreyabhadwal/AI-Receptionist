@@ -20,7 +20,7 @@ openai.api_key = ""
 
 def call_agent():
     
-    openai.api_key = "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"
+    openai.api_key = ""
 
     zapier = ZapierNLAWrapper()
     toolkit = ZapierToolkit.from_zapier_nla_wrapper(zapier)
