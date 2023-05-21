@@ -15,13 +15,8 @@ import os
 from langchain.agents import AgentType
 from langchain import PromptTemplate
 
-os.environ["ZAPIER_NLA_API_KEY"] = os.environ.get("ZAPIER_NLA_API_KEY", "sk-ak-zAJqR1Fs5vsKN7pWhaFQit7Kug")
-openai.api_key = "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"
-
 def call_agent():
     
-    openai.api_key = "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"
-
     zapier = ZapierNLAWrapper()
     toolkit = ZapierToolkit.from_zapier_nla_wrapper(zapier)
 
@@ -34,21 +29,33 @@ def answer_the_call():
 
     template = """
     You are an AI receptionist to a paper company, receiving calls from various people. 
-    Your fellow AI recptionist has executed the follwing tasks. 
+    Your fellow AI recptionist has executed the follwing tasks according to the caller's request. 
     Tell this informtion to the caller in a friendly manner.
     Here are some examples:
     ======
-    INFO: The message "Paul, you missed yesterday's lunch" has been successfully appended to the Messages document
-    ANSWER:Your message has been successfully noted. Is there anything else I can help you?
+    CALLER: Tell Michael that he missed yesterday's lunch. 
+    INFO: The message "Michael, you missed yesterday's lunch" has been successfully appended to the Messages document
+    ANSWER: Your message has been successfully noted. Is there anything else I can help you with?
     
+    CALLER: Schedule an appointment with Jim for 2pm on the 26th of May
     INFO: The calendar invite has been successfully created.
-    ANSWER: Your meeting has been successfully scheduled. Is there anything else I can help you?
+    ANSWER: Your meeting has been successfully scheduled. Is there anything else I can help you with?
+
+    CALLER: Is Toby free for 2pm on the 23rd of May?
+    INFO: The calendar shows an appointment for 23rd of May.
+    ANSWER: I am sorry, he is not free at that particular slot. Is there anything else I can help you with?
+
+    CALLER: No, thank you. 
+    INFO: Not enough information provided in the instruction, missing <param>.
+    ANSWER: Thank you for calling, bye!
+
+    ========
+    {CALLER}
     ========
     {INFO}
     =====
     ANSWER: 
     """
-    openai.api_key = "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"
     llm = OpenAI(temperature=0)
     receptionist_prompt = PromptTemplate(template=template, input_variables=["INFO"])
     llm_answer_chain = LLMChain(llm=llm, prompt=receptionist_prompt)
