@@ -4,6 +4,8 @@ Book appointments, record messages, get information and much more via voice thro
 
 Currently can book appointments and record messages.
 
+Powered by Langchain and Zapier. 
+
 Things to be worked upon:
 
 1. Adding memory to the agent.
