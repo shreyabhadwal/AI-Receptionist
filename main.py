@@ -17,11 +17,11 @@ channels = 1  # number of channels
 sd.default.samplerate = fs
 sd.default.channels = 2
 
-os.environ["OPENAI_API_KEY"] = "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" #OpenAI Key
+os.environ["OPENAI_API_KEY"] = "" #OpenAI Key
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-set_api_key("c8c37eecf2a27ac31e34e0f580da0433")
-os.environ["ZAPIER_NLA_API_KEY"] = os.environ.get("ZAPIER_NLA_API_KEY", "sk-ak-zAJqR1Fs5vsKN7pWhaFQit7Kug")
+set_api_key("")
+os.environ["ZAPIER_NLA_API_KEY"] = os.environ.get("ZAPIER_NLA_API_KEY", "")
 
 def record_audio(duration, fs, channels):
     print("Recording...")
